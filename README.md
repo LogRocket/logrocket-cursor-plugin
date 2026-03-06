@@ -1,34 +1,38 @@
-# Cursor plugin template
+# LogRocket Plugin for Cursor
 
-Build and publish Cursor Marketplace plugins from a single repo.
+Connect Cursor to [LogRocket](https://logrocket.com) to query session replays, metrics, issues, and user behavior using natural language — powered by the [LogRocket MCP Server](https://docs.logrocket.com/docs/mcp) and [Ask Galileo](https://docs.logrocket.com/docs/ask-galileo).
 
-Two starter plugins are included:
+## What's Included
 
-- **starter-simple**: rules and skills only
-- **starter-advanced**: rules, skills, agents, commands, hooks, MCP, and scripts
+| Component | Description |
+|-----------|-------------|
+| **MCP Server** | Connects Cursor to the LogRocket API via the `use_logrocket` tool |
+| **Use LogRocket Skill** | Teaches your AI agent how to query LogRocket on your behalf |
 
-## Getting started
+## Setup
 
-[Use this template](https://github.com/cursor/plugin-template/generate) to create a new repository, then customize:
+1. Install the plugin from the Cursor Marketplace.
+2. Find your **App ID** under **Settings > Project Settings** in the [LogRocket dashboard](https://app.logrocket.com), or from the URL: `https://app.logrocket.com/<org_id>/<project_id>`.
+3. Set the environment variables `LOGROCKET_ORG_ID` and `LOGROCKET_PROJECT_ID`, or replace them directly in the plugin's `mcp.json`.
+4. Connect to the MCP server when prompted by Cursor to authenticate.
 
-1. `.cursor-plugin/marketplace.json`: set marketplace `name`, `owner`, and `metadata`.
-2. `plugins/*/.cursor-plugin/plugin.json`: set `name` (lowercase kebab-case), `displayName`, `author`, `description`, `keywords`, `license`, and `version`.
-3. Replace placeholder rules, skills, agents, commands, hooks, scripts, and logos.
+## Example Prompts
 
-To add more plugins, see `docs/add-a-plugin.md`.
+- "User X reported a problem with checkout. Can you use LogRocket to watch their sessions and figure out the root cause?"
+- "I'm about to work on the search feature — can you use LogRocket to help me understand how it's currently being used?"
+- "Can you look at LogRocket for new issues from the past week, try to figure out their root causes, and then suggest which ones I can fix?"
+- "Look at all commits from last week, and check LogRocket data to ensure they didn't introduce any regressions."
+- "Use LogRocket to watch sessions and look at issues to figure out what is highest priority that I work on next."
 
-## Single plugin vs multi-plugin
+## Learn More
 
-This template defaults to **multi-plugin** (multiple plugins in one repo).
+- [LogRocket MCP Server Docs](https://docs.logrocket.com/docs/mcp)
+- [Ask Galileo Docs](https://docs.logrocket.com/docs/ask-galileo)
 
-For a **single plugin**, move your plugin folder contents to the repository root, keep one `.cursor-plugin/plugin.json`, and remove `.cursor-plugin/marketplace.json`.
+## Validation
 
-## Submission checklist
+Run the template validation script to verify the plugin structure:
 
-- Each plugin has a valid `.cursor-plugin/plugin.json`.
-- Plugin names are unique, lowercase, and kebab-case.
-- `.cursor-plugin/marketplace.json` entries map to real plugin folders.
-- All frontmatter metadata is present in rule, skill, agent, and command files.
-- Logos are committed and referenced with relative paths.
-- `node scripts/validate-template.mjs` passes.
-- Repository link is ready for submission to the Cursor team (Slack or `kniparko@anysphere.com`).
+```sh
+node scripts/validate-template.mjs
+```

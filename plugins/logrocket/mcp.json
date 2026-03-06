@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "logrocket": {
+      "url": "https://mcp.logrocket.com/mcp/${LOGROCKET_ORG_ID}/${LOGROCKET_PROJECT_ID}"
+    }
+  }
+}
