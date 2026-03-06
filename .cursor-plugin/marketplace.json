@@ -1,24 +1,19 @@
 {
-  "name": "cursor-plugin-starters",
+  "name": "logrocket",
   "owner": {
-    "name": "Your Org",
-    "email": "plugins@example.com"
+    "name": "LogRocket",
+    "email": "support@logrocket.com"
   },
   "metadata": {
-    "description": "Starter marketplace template for Cursor plugins",
+    "description": "Connect Cursor to LogRocket to query session replays, metrics, issues, and user behavior.",
     "version": "0.1.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
-      "name": "starter-simple",
-      "source": "./plugins/starter-simple",
-      "description": "Minimal plugin with rules and skills only"
-    },
-    {
-      "name": "starter-advanced",
-      "source": "./plugins/starter-advanced",
-      "description": "Full-featured plugin with rules, skills, agents, commands, hooks, and MCP"
+      "name": "logrocket",
+      "source": "plugins/logrocket",
+      "description": "LogRocket MCP integration with a skill for querying sessions, metrics, and issues"
     }
   ]
 }
