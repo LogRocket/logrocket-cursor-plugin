@@ -7,7 +7,13 @@
     "name": "LogRocket",
     "email": "support@logrocket.com"
   },
+  "homepage": "https://github.com/AppHubPlatform/logrocket-cursor-plugin/tree/main/logrocket",
+  "repository": "https://github.com/AppHubPlatform/logrocket-cursor-plugin",
   "license": "MIT",
+  "logo": "assets/logo.png",
   "keywords": ["logrocket", "session-replay", "analytics", "mcp", "galileo"],
-  "logo": "assets/logo.png"
+  "category": "developer-tools",
+  "tags": ["logrocket", "session-replay", "analytics", "observability", "debugging"],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
 }

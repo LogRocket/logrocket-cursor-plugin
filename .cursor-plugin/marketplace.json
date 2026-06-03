@@ -6,13 +6,12 @@
   },
   "metadata": {
     "description": "Connect Cursor to LogRocket to query session replays, metrics, issues, and user behavior.",
-    "version": "0.1.0",
-    "pluginRoot": "plugins"
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "logrocket",
-      "source": "plugins/logrocket",
+      "source": "logrocket",
       "description": "LogRocket MCP integration with a skill for querying sessions, metrics, and issues"
     }
   ]

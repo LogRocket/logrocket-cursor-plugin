@@ -16,13 +16,27 @@ description: Query LogRocket for session replays, metrics, issues, and user beha
 - Analyzing post-launch behavior for a new feature
 - Researching a specific user or account's sessions
 
+## Available tools
+
+This plugin connects to the LogRocket MCP server with all toolsets enabled (`?toolsets=all`), so you have access to both the high-level natural-language tool and specialized tools:
+
+- `use_logrocket` — Run a natural-language `query` against LogRocket. Powered by Ask Galileo, which chains the underlying tools internally. Best default for open-ended investigation ("figure out the root cause", "how is this feature used").
+- `find_sessions` — Filter LogRocket sessions by criteria (URL, user email, events, time range, etc.). Use when you need a precise, structured list of sessions.
+- `watch_sessions` — Analyze and/or extract detailed information from one or more specific sessions. Use after `find_sessions` (or when you already have session IDs) to get qualitative, step-by-step insight into what a user did.
+- `build_metric` — Query LogRocket analytics data to build/return a metric. Use for quantitative questions (counts, trends, conversion, frustration signals).
+- `list_organizations` — List the LogRocket organizations you can access.
+- `list_projects` — List the LogRocket projects within an organization.
+
 ## Instructions
 
-1. Call the `use_logrocket` MCP tool with a natural language `query` describing what you want to know.
-2. To continue the same conversation (e.g. follow-up questions, drilling deeper), pass the `chatID` from the previous response.
-3. Be specific about what you want analyzed — mention URLs, click targets, user emails, time ranges, or custom events when possible.
-4. Ask LogRocket to watch sessions when you need detailed, qualitative insights about user behavior.
-5. Present results clearly to the user, including any session URLs, metrics, charts, or actionable insights.
+1. Pick the right tool for the job:
+   - For open-ended investigation, start with `use_logrocket` and let Ask Galileo orchestrate.
+   - For precise filtering or quantitative analysis, use `find_sessions` + `watch_sessions` or `build_metric` directly.
+2. This MCP server is connected to the root LogRocket URL (not scoped to a specific org/project). When the target org/project isn't already known from context, call `list_organizations` and `list_projects` first to discover and confirm the right one before querying.
+3. For `use_logrocket`, pass a natural language `query` describing what you want to know. To continue the same conversation (e.g. follow-up questions, drilling deeper), pass the `chatID` from the previous response.
+4. Be specific about what you want analyzed — mention URLs, click targets, user emails, time ranges, or custom events when possible.
+5. Use `watch_sessions` when you need detailed, qualitative insights about user behavior.
+6. Present results clearly to the user, including any session URLs, metrics, charts, or actionable insights.
 
 ## Example Prompts
 

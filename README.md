@@ -12,9 +12,9 @@ Connect Cursor to [LogRocket](https://logrocket.com) to query session replays, m
 ## Setup
 
 1. Install the plugin from the Cursor Marketplace.
-2. Find your **App ID** under **Settings > Project Settings** in the [LogRocket dashboard](https://app.logrocket.com), or from the URL: `https://app.logrocket.com/<org_id>/<project_id>`.
-3. Set the environment variables `LOGROCKET_ORG_ID` and `LOGROCKET_PROJECT_ID`, or replace them directly in the plugin's `mcp.json`.
-4. Connect to the MCP server when prompted by Cursor to authenticate.
+2. Connect to the LogRocket MCP server when prompted by Cursor, and authenticate via OAuth.
+
+That's it — the MCP server connects to the root `https://mcp.logrocket.com/mcp` endpoint and gives the agent access to the same LogRocket organizations and projects you can access in your browser. No environment variables required.
 
 ## Example Prompts
 
@@ -29,10 +29,30 @@ Connect Cursor to [LogRocket](https://logrocket.com) to query session replays, m
 - [LogRocket MCP Server Docs](https://docs.logrocket.com/docs/mcp)
 - [Ask Galileo Docs](https://docs.logrocket.com/docs/ask-galileo)
 
+## Repository structure
+
+This is a multi-plugin marketplace repository, mirroring the layout of the official [cursor/plugins](https://github.com/cursor/plugins) repo. The root `.cursor-plugin/marketplace.json` lists all plugins, and each plugin lives in its own top-level directory:
+
+```
+.cursor-plugin/
+└── marketplace.json       # Marketplace manifest (lists all plugins)
+logrocket/
+├── .cursor-plugin/
+│   └── plugin.json        # Per-plugin manifest
+├── skills/                # Agent skills (SKILL.md with frontmatter)
+├── mcp.json               # MCP server definition
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
+schemas/                   # JSON schemas for validation
+scripts/validate-plugins.mjs
+```
+
 ## Validation
 
-Run the template validation script to verify the plugin structure:
+Validate the plugin structure against the Cursor plugin schemas:
 
 ```sh
-node scripts/validate-template.mjs
+npm install --no-save ajv ajv-formats
+node scripts/validate-plugins.mjs
 ```
